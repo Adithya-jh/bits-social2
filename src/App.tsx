@@ -84,10 +84,6 @@ function App() {
           <LeftDesktopLayout />
 
           <div className="flex-1 xl:max-w-3xl h-screen flex flex-col border-x border-twitterBorder/40">
-            <div className="sticky top-0 z-20 bg-(--background-main)/95 backdrop-blur-sm border-b border-twitterBorder/30 px-4 py-3">
-              <Header />
-            </div>
-
             <div className="flex-1 overflow-y-auto scrollbar-blue bg-(--background-main)">
               <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
