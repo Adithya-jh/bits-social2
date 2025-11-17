@@ -1,1 +1,10 @@
-docker exec -it backend-postgres-1 psql -U postgres -d bits_social
+
+#docker exec -it backend-postgres-1 psql -U postgres -d bits_social
+
+# render's
+# psql "postgresql://bits_social_user:YDi9X08150ouxvB9B4oFomhTmoXoyZxb@dpg-d4djb2q4d50c73dqck3g-a.oregon-postgres.render.com/bits_social"
+
+# \dt                         -- list tables
+# SELECT * FROM "User" LIMIT 5;
+# SELECT * FROM "Post" ORDER BY id DESC LIMIT 5;
+# \q                          -- quit
