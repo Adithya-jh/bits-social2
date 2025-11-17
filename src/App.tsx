@@ -1,7 +1,12 @@
 import "./App.css";
 import FooterBar from "./components/layout/FooterBar.tsx";
 import Header from "./components/layout/Header.tsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import HomePage from "./components/pages/HomePage.tsx";
 import ProfilePage from "./components/pages/profile/ProfilePage.tsx";
 import { ModalProvider } from "./context/ModalProvider.tsx";
@@ -56,8 +61,61 @@ function App() {
     () => (typeof window !== "undefined" ? localStorage.getItem("jwt") : null),
     []
   );
-  const { isLoading, isError } = useCurrentUser();
-  const { data: currentUser } = useCurrentUser();
+  const { isLoading, isError, data: currentUser } = useCurrentUser();
+
+  const ProtectedApp = () => {
+    if (!token || isError) {
+      return <Navigate to="/login" replace />;
+    }
+
+    if (isLoading) return null;
+    if (!currentUser) return null;
+
+    const needsOnboarding =
+      !currentUser.username || !(currentUser as any).campus;
+
+    if (needsOnboarding) {
+      return <OnboardingPage onComplete={() => window.location.replace("/")} />;
+    }
+
+    return (
+      <div className="min-h-screen w-full bg-(--background-main) text-twitterText flex justify-center">
+        <div className="flex w-full max-w-[1600px] gap-6 px-3 xl:px-10">
+          <LeftDesktopLayout />
+
+          <div className="flex-1 xl:max-w-3xl h-screen flex flex-col border-x border-twitterBorder/40">
+            <div className="sticky top-0 z-20 bg-(--background-main)/95 backdrop-blur-sm border-b border-twitterBorder/30 px-4 py-3">
+              <Header />
+            </div>
+
+            <div className="flex-1 overflow-y-auto scrollbar-blue bg-(--background-main)">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="profile/:ID" element={<ProfilePage />} />
+                <Route path="tweet/:postId" element={<FullTweet />} />
+                <Route path="saved" element={<SavedPage />} />
+                <Route path="explore" element={<ExplorePage />} />
+                <Route path="notifications" element={<NotificationPage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+              <Toaster
+                position="bottom-center"
+                toastOptions={toastOptions}
+                containerClassName="mb-12 xs:mb-0"
+              />
+            </div>
+
+            <div className="xl:hidden">
+              <FooterBar />
+            </div>
+          </div>
+
+          <RightDesktopLayout />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <Router>
@@ -65,60 +123,19 @@ function App() {
         <ModalProvider>
           <HeaderContentProvider>
             <ModalManager />
-
-            {(!token || isError) && <LoginPage />}
-
-            {token && !isError && (
-              <>
-    {isLoading ? null : !currentUser ? null : currentUser.username && (currentUser as any).campus ? (
-                  <div className="min-h-screen w-full bg-(--background-main) text-twitterText flex justify-center">
-                    <div className="flex w-full max-w-[1600px] gap-6 px-3 xl:px-10">
-                      <LeftDesktopLayout />
-
-                      <div className="flex-1 xl:max-w-3xl h-screen flex flex-col border-x border-twitterBorder/40">
-                        <div className="sticky top-0 z-20 bg-(--background-main)/95 backdrop-blur-sm border-b border-twitterBorder/30 px-4 py-3">
-                          <Header />
-                        </div>
-
-                        <div className="flex-1 overflow-y-auto scrollbar-blue bg-(--background-main)">
-                          <Routes>
-                            <Route path="" element={<HomePage />} />
-
-                            <Route path="profile/:ID" element={<ProfilePage />} />
-
-                            <Route path="tweet/:postId" element={<FullTweet />} />
-
-                            <Route path="saved" element={<SavedPage />} />
-
-                            <Route path="explore" element={<ExplorePage />} />
-
-                            <Route
-                              path="notifications"
-                              element={<NotificationPage />}
-                            />
-
-                            <Route path="about" element={<AboutPage />} />
-                          </Routes>
-                          <Toaster
-                            position="bottom-center"
-                            toastOptions={toastOptions}
-                            containerClassName="mb-12 xs:mb-0"
-                          />
-                        </div>
-
-                        <div className="xl:hidden">
-                          <FooterBar />
-                        </div>
-                      </div>
-
-                      <RightDesktopLayout />
-                    </div>
-                  </div>
-                ) : (
-                  <OnboardingPage onComplete={() => window.location.reload()} />
-                )}
-              </>
-            )}
+            <Routes>
+              <Route
+                path="/login"
+                element={
+                  token && !isError ? (
+                    <Navigate to="/" replace />
+                  ) : (
+                    <LoginPage />
+                  )
+                }
+              />
+              <Route path="/*" element={<ProtectedApp />} />
+            </Routes>
           </HeaderContentProvider>
         </ModalProvider>
       </GoogleOAuthProvider>
