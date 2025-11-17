@@ -16,9 +16,17 @@ function BannerComponent({ userId }: BannerComponentProps) {
   return (
     <>
       {user ? (
-        <img className="object-cover h-full w-full" src={user.bannerImageUrl} />
+        user.bannerImageUrl ? (
+          <img
+            className="object-cover h-full w-full rounded-xl"
+            src={user.bannerImageUrl}
+            alt="Profile banner"
+          />
+        ) : (
+          <div className="h-full w-full rounded-xl bg-gradient-to-r from-[#12121a] via-[#181824] to-[#12121a]" />
+        )
       ) : (
-        <div className="h-full w-full bg-gray-600 animate-pulse"></div>
+        <div className="h-full w-full bg-gray-600 animate-pulse rounded-xl"></div>
       )}
     </>
   );
