@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/Chirp Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/Chirp Heavy.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@layer utilities {
+  .scrollbar-blue {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-main) transparent;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar-thumb {
+    background-color: var(--color-main);
+    border-radius: 4px;
+  }
+
+  .scrollbar-blue::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme {
+  --color-twitterBorder: #292932;
+  --color-twitterHover: #1b1b23;
+
+  --color-twitterText: #f2f3f6;
+  --color-twitterTextAlt: #a1a1b2;
+
+  --color-backgroundBlack: #050507;
+  --color-backgroundDim: #0f0f16;
+
+  --color-twitterBlue: #1c9bf0;
+  --color-twitterRed: #ff2c84;
+  --color-twitterYellow: #ffd404;
+  --color-twitterPurple: #8054fc;
+  --color-twitterGreen: #00ba7c;
+  --color-twitterBlack: #000000;
+  --background-main: #0b0b11;
+  --color-main: #ff6b18;
+
+  --font-twitter: TwitterChirp;
+
+  --animate-hover-card: fade-in 0.2s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--background-main);
+  color: var(--color-twitterText);
+  overscroll-behavior: contain;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}

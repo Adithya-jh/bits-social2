@@ -1,0 +1,39 @@
+{
+  "node": {
+    "7faa5ea99226580917140578ece24b42b0c8b19b6e": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227faa5ea99226580917140578ece24b42b0c8b19b6e%22%2C%22createOrReadKeylessAction%22%5D%2C%5B%227fb0cb725b5cf4ecf95c2a1a85692bf623c67e8316%22%2C%22syncKeylessConfigAction%22%5D%5D%5D%2C%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f2cd277e710b3b452fbc353e17fda6a7ff1130a62%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser"
+      }
+    },
+    "7fb0cb725b5cf4ecf95c2a1a85692bf623c67e8316": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227faa5ea99226580917140578ece24b42b0c8b19b6e%22%2C%22createOrReadKeylessAction%22%5D%2C%5B%227fb0cb725b5cf4ecf95c2a1a85692bf623c67e8316%22%2C%22syncKeylessConfigAction%22%5D%5D%5D%2C%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f2cd277e710b3b452fbc353e17fda6a7ff1130a62%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser"
+      }
+    },
+    "7f2cd277e710b3b452fbc353e17fda6a7ff1130a62": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227faa5ea99226580917140578ece24b42b0c8b19b6e%22%2C%22createOrReadKeylessAction%22%5D%2C%5B%227fb0cb725b5cf4ecf95c2a1a85692bf623c67e8316%22%2C%22syncKeylessConfigAction%22%5D%5D%5D%2C%5B%22%2FUsers%2Fjayahariaditiya%2FDesktop%2Fbits-social%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f2cd277e710b3b452fbc353e17fda6a7ff1130a62%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "xJ64DtRPLBrBd7DKD/wi4/6YJWJhD0z7LOsnW75vpHc="
+}
