@@ -16,3 +16,13 @@
 # \c defaultdb 
 
 # SHOW TABLES; 
+
+
+# SELECT
+#   p.id,
+#   p.text,
+#   p."createdAt"
+# FROM "Post" p
+# JOIN "User" u ON u.id = p."authorId"
+# ORDER BY p."createdAt" DESC
+# LIMIT 50;
